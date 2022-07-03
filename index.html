@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor de memes</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@200&family=Montserrat:wght@300;800&family=Open+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header id="header">
+        <h1 class="h1">Generador de Memes</h1>
+        <div class="menu-botones">
+            <button id="boton-imagen"><i class="fa-solid fa-file-image"></i>Imagen</button>
+            <button id="boton-texto"><i class="fa-solid fa-font"></i>Texto</button>
+            <button id="boton-modo-oscuro" class=""><i class="fa-solid fa-lightbulb"></i>Modo Oscuro</button>
+        </div>
+    </header>
+    <div class="editor-contenedor">
+        <main class="meme-contenedor">
+            <div class="imagen-editable" id="imagen-editable">
+                <p class="texto-meme" id="texto-arriba">TOP TEXT</p>
+                <div src(desconocido) alt id="imagen-meme"></div>
+                <p class="texto-meme" id="texto-abajo">BOTOM TEXT</p>
+            </div>
+        </main>
+        <aside id="panel">
+            <button id="cerrar-panel"><i class="fa-solid fa-xmark"></i></button>
+            <!-- ************************************************************|PANEL IMAGEN|*************************************************************** -->
+            <section class="panel-imagen-oculto" id="panel-imagen">
+                <h2 class="panel-titulo">IMAGEN</h2>
+                <div class="panel-control">
+                    <h3 class="titulo-panel-control">URL</h3>
+                    <input type="text" class="panel-control-input" id="input-url">
+                </div>
+                <!-- ***************************************FONDO***************************************** -->
+                <div class="panel-control">
+                    <h3 class="titulo-panel-control">FONDO</h3>
+                    <div class="panel-control-columnas">
+                        <div class="panel-control-color panel-control-columna">
+                            <input type="color" id="mezcla-colores-input"  value="#FFFFFF">
+                            <span id="mezcla-colores">#FFFFFF</span>
+                        </div>
+                        <div class="panel-control-columna">
+                            <select id="mezcla-colores-menu" class="panel-control-input">
+                                <option value="inguno">Ninguno</option>
+                                <option value="aclarar">Aclarar</option>
+                                <option value="oscurecer">Oscurecer</option>
+                                <option value="diferencia">Diferencia</option>
+                                <option value="luminocidad">Luminocidad</option>
+                                <option value="multiplicar">Multiplicar</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!-- ****************************************FILTROS************************************* -->
+                <div class="panel-control">
+                    <h3 class="titulo-panel-control">FILTROS</h3>
+                    <div class="panel-control-deslizante">
+                        <label for="brightness-deslizar">BRILLO</label>
+                        <input type="range" id="brightness-deslizar" min="0" max="1" value="1" step="0.1">
+                    </div>
+                    <div class="panel-control-deslizante">
+                        <label for="opacity-deslizar">OPACIDAD</label>
+                        <input type="range" id="opacity-deslizar" min="0" max="1" value="1" step="0.1">
+                    </div>
+                    <div class="panel-control-deslizante">
+                        <label for="contrast-deslizar">CONTRASTE</label>
+                        <input type="range" id="contrast-deslizar" min="100" max="1000" value="100">
+                    </div>
+                    <div class="panel-control-deslizante">
+                        <label for="blur-deslizar">DESENFOQUE</label>
+                        <input type="range" id="blur-deslizar" min="0" max="10" value="0" step="0.1">
+                    </div>
+                    <div class="panel-control-deslizante">
+                        <label for="grayscale-deslizar">ESCALA DE GRISES</label>
+                        <input type="range" id="grayscale-deslizar" min="0" max="100" value="0">
+                    </div>
+                    <div class="panel-control-deslizante">
+                        <label for="sepia-deslizar">SEPIA</label>
+                        <input type="range" id="sepia-deslizar" min="0" max="100" value="0">
+                    </div>
+                    <div class="panel-control-deslizante">
+                        <label for="hue-deslizar">HUE</label>
+                        <input type="range" id="hue-deslizar" min="0" max="369" value="0">
+                    </div>
+                    <div class="panel-control-deslizante">
+                        <label for="saturation-deslizar">SATURACION</label>
+                        <input type="range" id="saturation-deslizar" min="100" max="1000" value="100" step="10">
+                    </div>
+                    <div class="panel-control-deslizante">
+                        <label for="invert-deslizar">NEGATIVO</label>
+                        <input type="range" id="invert-deslizar" min="0" max="1" value="0" step="0.1">
+                    </div>
+                </div>
+                <button id="boton-reestablecer">Reestablecer filtros</button>
+            </section>
+            <!-- ****************************************************|PANEL TEXTO|************************************************************* -->
+            <section class="panel-texto-oculto oculto" id="panel-texto">
+                <h2 class="panel-titulo">TEXTO</h2>
+                <!-- **************************************************TEXTO******************************************************************** -->
+                <div class="panel-control">
+                    <h3 class="panel-control-titulo">SUPERIOR</h3>
+                    <textarea class="panel-control-input" id="texto-superior-input">TOP TEXT</textarea>
+                    <div class="panel-control-checkbox">
+                        <input type="checkbox" id="sin-texto-superior">
+                        <label for="sin-texto-superior">Sin texto superior</label>
+                    </div>
+                </div>
+                <div class="panel-control">
+                    <h3 class="panel-control-titulo">INFERIOR</h3>
+                    <textarea class="panel-control-input" id="texto-inferior-input">BOTTOM TEXT</textarea>
+                    <div class="panel-control-checkbox">
+                        <input type="checkbox" id="sin-texto-inferior">
+                        <label for="sin-texto-inferior">Sin texto superior</label>
+                    </div>
+                </div>
+                <!-- ****************************************************FUENTE********************************************************************** -->
+                <div class="panel-control">
+                    <h3 class="panel-control-titulo">FUENTE</h3>
+                    <select name="Familia de fuentes" id="selector-fuentes" class="panel-control-input">
+                        <option value="Arial">Arial </option>
+                        <option value="Arial Black">Arial Black</option>
+                        <option value="American Typewriter">American Typewriter</option>
+                        <option value="Andale Mono">Andale Mono</option>
+                        <option value="Comic Sans MS">Comic Sans MS</option>
+                        <option value="Helvetica">Helvetica</option>
+                        <option value="Impact" selected>Impact</option>
+                        <option value="Verdana">Verdana</option>
+                        <option value="Times New Roman">Times New Roman</option>
+                    </select>
+                    <div class="contenedor-opciones">
+                        <input type="number" name="Tamaño de fuente" class="panel-control-input" id="tamaño-texto" min="12" value="40">
+                        <div class="menu-botones">
+                            <button class="button" id="alineacion-izquierda" aria-label="Alinear texto a la izquierda"><i class="fa-solid fa-align-left"></i></button>
+                            <button class="button" id="alineacion-centro" aria-label="Alinear texto al centro"><i class="fa-solid fa-align-center"></i></button>
+                            <button class="button" id="alineacion-derecha" aria-label="Alinear texto a la derecha"><i class="fa-solid fa-align-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <!-- *****************************************************COLOR******************************************************************** -->
+                <div class="panel-control">
+                    <div class="panel-control-columna">
+                        <div class="panel-control-columna panel-control">
+                            <h3 class="panel-control-titulo">COLOR</h3>
+                            <div class="panel-control-color">
+                                <input name="Color de texto" type="color" id="texto-color-input" value="#000000">
+                                <span id="texto-color">#000000</span>
+                            </div>
+                        </div>
+                        <div class="panel-control-columna panel-control">
+                            <h3 class="panel-control-titulo">FONDO</h3>
+                            <div class="panel-control-color">
+                                <input name="Color de fondo de texto" type="color" id="texto-color-fondo-input" value="#FFFFFF">
+                                <span id="texto-color-fondo">#FFFFFF</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-control-checkbox">
+                        <input type="checkbox" id="texto-sin-fondo">
+                        <label for="texto-sin-fondo">Fondo transparente</label>
+                    </div>
+                </div>
+                <div class="panel-control">
+                    <h3 class="panel-control-titulo">CONTORNO</h3>
+                    <div class="botones-contenedor">
+                        <button class="boton" id="sin-contorno">Ninguno</button>
+                        <button class="boton" id="contorno-claro">Claro</button>
+                        <button class="boton" id="contorno-oscuro">Oscuro</button>
+                    </div>
+                </div>
+                <div class="panel-control">
+                    <h3 class="panel-control-titulo">ESPACIADO</h3>
+                    <input type="number" id="espaciado-input" class="panel-control-input" min="10" max="50" value="14">
+                </div>
+                <div class="panel-control">
+                    <h3 class="panel-control-titulo">INTERLINEADO</h3>
+                    <select id="interlineado-input" class="panel-control-input">
+                        <option value="0.8">0.8</option>
+                        <option value="1">1</option>
+                        <option value="1.2" selected>1.2</option>
+                        <option value="1.5">1.5</option>
+                        <option value="2">2</option>
+                        <option value="2.5">2.5</option>
+                    </select>
+                </div>
+            </section>
+        </aside>
+    </div>
+    <script src="./app.js"></script>
+</body>
+</html>
