@@ -13,6 +13,10 @@ body{
 header{
     background-color: #191e2b;
 }
+.header-claro{
+    background-color: #e0e0e0;
+    color: #424242;
+}
 .h1{
     margin: 10px;
     text-align: center;
@@ -23,6 +27,7 @@ header{
 .menu-botones{
     justify-content: center;
     display: flex;
+    flex-wrap: wrap;
 }
 button{
     color: white;
@@ -36,8 +41,11 @@ button{
     justify-content: center;
     align-items: center;
     border-radius: 3px;
-    /* transition: background-color 0.2s; */
-    /* cursor: pointer */
+}
+.editor-contenedor {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
 }
 .meme-contenedor{
     flex-grow: 1;
@@ -46,7 +54,10 @@ button{
     justify-content: center;
     align-items: center;
     background-color: #30343f;
-    padding: 0 20px;
+    padding: 0px 20px;
+}
+.meme-contenedor-claro{
+    background-color: #eeeeee;
 }
 .imagen-editable{
     width: 100%;
@@ -58,6 +69,7 @@ button{
     flex-direction: column;
 }
 .texto-meme{
+    width: 100%;
     background-color: white;
     color: black;
     text-align: center;
@@ -69,8 +81,26 @@ button{
 }
 #imagen-meme{
     flex-grow: 1;
+    background-size: cover;
+    width: 100%;
 }
-#panel{
+#texxto-arriba{
+    top: 0;
+}
+#texto-abajo{
+    bottom: 0;
+}
+.boton-descargar{
+    margin-top: 30px;
+    padding: 15px 15px;
+    height: auto;
+    background-color: #2e7d32;
+    display: flex;
+}
+.boton-descargar:hover {
+    background-color: #236327;
+}
+aside{
     width: 250px;
     height: 100%;
     flex-direction: column;
@@ -81,6 +111,10 @@ button{
     position: fixed;
     top: 0;
     right: 0;
+}
+.panel-claro{
+    background-color: #fafafa;
+    color: #424242;
 }
 .panel-control{
     margin-bottom: 20px;
@@ -102,27 +136,59 @@ button{
     display: flex;
     justify-content: space-between;
     border-radius: 3px;
-    /* background-color: #393e49; */
 }
 .panel-control-color{
     position: relative;
     height: 36px;
     display: flex;
+    background-color: #393e49;
+    border-radius: 3px;
+    align-items: center;
+}
+.panel-control-color:hover{
+    background-color: #4e5565;
 }
 .panel-control-columnas .panel-control-columna {
     width: calc(50% - 5px);
     margin-bottom: 0;
 }
-
-input, button, select, textarea{
+input{
     border: 0;
     color: white;
     font-family: 'Open Sans', sans-serif;
     display: block;
     outline: 0;
+    background-color: transparent;
+}
+button, select, textarea{
+    border: 0;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    display: block;
+    outline: 0;
+    background-color: #393e49;
+}
+.button{
+    border: 0;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    display: block;
+    outline: 0;
+    background-color: transparent;
+}
+button:hover{
+    background-color: #4e5565;
+}
+.button-claro{
+    color: #424242;
+    background-color: #e0e0e0
+}
+.button-claro:hover{
+    background-color: #bdbdbd;
 }
 .panel-control-color > input[type='color'] {
     padding: 1px 2px;
+    align-items: center;
 }
 .panel-control-color > span {
     position: static;
@@ -139,6 +205,24 @@ input, button, select, textarea{
     margin-bottom: 5px;
     color: white;
 }
+.panel-control-input:hover{
+    background-color: #4e5565;
+}
+.panel-control-input-claro{
+    background-color: #e0e0e0;
+    color: #424242;
+}
+.panel-control-input-claro:hover{
+    background-color: #bdbdbd;
+} 
+.claro{
+    background-color: #e0e0e0;
+    color: #424242;
+}
+.claro:hover{
+    background-color: #bdbdbd;
+}
+
 .panel-control-deslizante{
     margin-top: 15px;
 }
@@ -154,8 +238,18 @@ input[type='range'] {
     height: 6px;
     margin-top: 10px;
 }
-#boton-reestablecer{
+.boton-reestablecer{
     background-color: #393e49;
+}
+.boton-reestablecer-claro{
+    background-color: #e0e0e0;
+    color: #424242;
+}
+.boton-reestablecer:hover{
+    background-color: #4e5565;
+}
+.boton-reestablecer-claro:hover{
+    background-color: #bdbdbd;
 }
 #cerrar-panel{
     position: fixed;
@@ -169,7 +263,7 @@ input[type='range'] {
     font-size: 12px;
     margin-top: 0;
 }
-.contenedor-opciones{
+.contenedor{
     display: flex;
     align-items: center;
 }
@@ -186,4 +280,37 @@ input[type='range'] {
 }
 .fondo{
     background-color: transparent;
+    position: absolute;
+}
+@media (max-width: 700px)
+{   
+    aside{width: 100%;}
+    .texto-meme{font-size: 35px;
+                padding: 13px 50px;}
+    .h1{font-size: 26px;}
+}
+@media (max-width: 600px)
+{
+    .imagen-editable{height: 560px;}
+    .texto-meme{font-size: 30px;}
+}
+@media (max-width: 500px)
+{
+    .imagen-editable{height: 460px;}
+    .texto-meme{font-size: 25px;
+        padding: 10px 50px;}
+}
+@media (max-width: 400px)
+{
+    .imagen-editable{height: 360px;}
+    .texto-meme{font-size: 20px;
+        padding: 8px 50px;}
+}
+@media (max-width: 300px)
+{
+    .imagen-editable{height: 250px;}
+    .texto-meme{font-size: 15px;
+        padding: 6px 50px;}
+    .h1{font-size: 20px;}
+
 }

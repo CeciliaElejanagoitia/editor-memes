@@ -4,32 +4,38 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editor de memes</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Editor de memes</title>    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@200&family=Montserrat:wght@300;800&family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
 </head>
-<body>
+<body id="body">
     <header id="header">
         <h1 class="h1">Generador de Memes</h1>
         <div class="menu-botones">
-            <button id="boton-imagen"><i class="fa-solid fa-file-image"></i>Imagen</button>
-            <button id="boton-texto"><i class="fa-solid fa-font"></i>Texto</button>
-            <button id="boton-modo-oscuro" class=""><i class="fa-solid fa-lightbulb"></i>Modo Oscuro</button>
+            <button id="boton-imagen" class="button"><i class="fa-solid fa-file-image"></i>Imagen</button>
+            <button id="boton-texto" class="button"><i class="fa-solid fa-font"></i>Texto</button>
+            <button id="boton-modo-claro" class="button"><i class="fa-solid fa-lightbulb"></i>Modo Claro</button>
         </div>
     </header>
     <div class="editor-contenedor">
-        <main class="meme-contenedor">
+        <main class="meme-contenedor" id="meme-contenedor">
             <div class="imagen-editable" id="imagen-editable">
                 <p class="texto-meme" id="texto-arriba">TOP TEXT</p>
                 <div src(desconocido) alt id="imagen-meme"></div>
                 <p class="texto-meme" id="texto-abajo">BOTOM TEXT</p>
             </div>
+            <button class="boton-descargar" id="boton-descargar"><i class="fa-solid fa-download"></i>Descargar meme</button>
         </main>
         <aside id="panel">
-            <button id="cerrar-panel"><i class="fa-solid fa-xmark"></i></button>
+            <button id="cerrar-panel" class="button boton-fondo"><i class="fa-solid fa-xmark"></i></button>
             <!-- ************************************************************|PANEL IMAGEN|*************************************************************** -->
             <section class="panel-imagen-oculto" id="panel-imagen">
                 <h2 class="panel-titulo">IMAGEN</h2>
@@ -41,18 +47,18 @@
                 <div class="panel-control">
                     <h3 class="titulo-panel-control">FONDO</h3>
                     <div class="panel-control-columnas">
-                        <div class="panel-control-color panel-control-columna">
+                        <div class="panel-control-color panel-control-columna" id="panel-control-color-imagen">
                             <input type="color" id="mezcla-colores-input"  value="#FFFFFF">
                             <span id="mezcla-colores">#FFFFFF</span>
                         </div>
                         <div class="panel-control-columna">
                             <select id="mezcla-colores-menu" class="panel-control-input">
-                                <option value="inguno">Ninguno</option>
-                                <option value="aclarar">Aclarar</option>
-                                <option value="oscurecer">Oscurecer</option>
-                                <option value="diferencia">Diferencia</option>
-                                <option value="luminocidad">Luminocidad</option>
-                                <option value="multiplicar">Multiplicar</option>
+                                <option value="Ninguno">Ninguno</option>
+                                <option value="Aclarar">Aclarar</option>
+                                <option value="Oscurecer">Oscurecer</option>
+                                <option value="Diferencia">Diferencia</option>
+                                <option value="Luminocidad">Luminocidad</option>
+                                <option value="Multiplicar">Multiplicar</option>
                             </select>
                         </div>
                     </div>
@@ -61,43 +67,43 @@
                 <div class="panel-control">
                     <h3 class="titulo-panel-control">FILTROS</h3>
                     <div class="panel-control-deslizante">
-                        <label for="brightness-deslizar">BRILLO</label>
-                        <input type="range" id="brightness-deslizar" min="0" max="1" value="1" step="0.1">
+                        <label for="brillo-deslizar">BRILLO</label>
+                        <input type="range" id="brillo-deslizar" min="0" max="1" value="1" step="0.1">
                     </div>
                     <div class="panel-control-deslizante">
-                        <label for="opacity-deslizar">OPACIDAD</label>
-                        <input type="range" id="opacity-deslizar" min="0" max="1" value="1" step="0.1">
+                        <label for="opacidad-deslizar">OPACIDAD</label>
+                        <input type="range" id="opacidad-deslizar" min="0" max="1" value="1" step="0.1">
                     </div>
                     <div class="panel-control-deslizante">
-                        <label for="contrast-deslizar">CONTRASTE</label>
-                        <input type="range" id="contrast-deslizar" min="100" max="1000" value="100">
+                        <label for="contraste-deslizar">CONTRASTE</label>
+                        <input type="range" id="contraste-deslizar" min="100" max="1000" value="100">
                     </div>
                     <div class="panel-control-deslizante">
-                        <label for="blur-deslizar">DESENFOQUE</label>
-                        <input type="range" id="blur-deslizar" min="0" max="10" value="0" step="0.1">
+                        <label for="des-deslizar">DESENFOQUE</label>
+                        <input type="range" id="des-deslizar" min="0" max="10" value="0" step="1">
                     </div>
                     <div class="panel-control-deslizante">
-                        <label for="grayscale-deslizar">ESCALA DE GRISES</label>
-                        <input type="range" id="grayscale-deslizar" min="0" max="100" value="0">
+                        <label for="escala-deslizar">ESCALA DE GRISES</label>
+                        <input type="range" id="escala-deslizar" min="0" max="100" value="0" step="1">
                     </div>
                     <div class="panel-control-deslizante">
                         <label for="sepia-deslizar">SEPIA</label>
-                        <input type="range" id="sepia-deslizar" min="0" max="100" value="0">
+                        <input type="range" id="sepia-deslizar" min="0" max="100" value="0" step="1">
                     </div>
                     <div class="panel-control-deslizante">
                         <label for="hue-deslizar">HUE</label>
-                        <input type="range" id="hue-deslizar" min="0" max="369" value="0">
+                        <input type="range" id="hue-deslizar" min="0" max="369" value="0" step="1">
                     </div>
                     <div class="panel-control-deslizante">
-                        <label for="saturation-deslizar">SATURACION</label>
-                        <input type="range" id="saturation-deslizar" min="100" max="1000" value="100" step="10">
+                        <label for="saturacion-deslizar">SATURACION</label>
+                        <input type="range" id="saturacion-deslizar" min="100" max="1000" value="100" step="10">
                     </div>
                     <div class="panel-control-deslizante">
-                        <label for="invert-deslizar">NEGATIVO</label>
-                        <input type="range" id="invert-deslizar" min="0" max="1" value="0" step="0.1">
+                        <label for="negativo-deslizar">NEGATIVO</label>
+                        <input type="range" id="negativo-deslizar" min="0" max="1" value="0" step="0.1">
                     </div>
                 </div>
-                <button id="boton-reestablecer">Reestablecer filtros</button>
+                <button id="boton-restablecer" class="boton-restablecer">Restablecer filtros</button>
             </section>
             <!-- ****************************************************|PANEL TEXTO|************************************************************* -->
             <section class="panel-texto-oculto oculto" id="panel-texto">
@@ -136,9 +142,9 @@
                     <div class="contenedor-opciones">
                         <input type="number" name="Tamaño de fuente" class="panel-control-input" id="tamaño-texto" min="12" value="40">
                         <div class="menu-botones">
-                            <button class="button" id="alineacion-izquierda" aria-label="Alinear texto a la izquierda"><i class="fa-solid fa-align-left"></i></button>
-                            <button class="button" id="alineacion-centro" aria-label="Alinear texto al centro"><i class="fa-solid fa-align-center"></i></button>
-                            <button class="button" id="alineacion-derecha" aria-label="Alinear texto a la derecha"><i class="fa-solid fa-align-right"></i></button>
+                            <button class="button boton-fondo" id="alineacion-izquierda" aria-label="Alinear texto a la izquierda"><i class="fa-solid fa-align-left"></i></button>
+                            <button class="button boton-fondo" id="alineacion-centro" aria-label="Alinear texto al centro"><i class="fa-solid fa-align-center"></i></button>
+                            <button class="button boton-fondo" id="alineacion-derecha" aria-label="Alinear texto a la derecha"><i class="fa-solid fa-align-right"></i></button>
                         </div>
                     </div>
                 </div>
@@ -147,14 +153,14 @@
                     <div class="panel-control-columna">
                         <div class="panel-control-columna panel-control">
                             <h3 class="panel-control-titulo">COLOR</h3>
-                            <div class="panel-control-color">
+                            <div class="panel-control-color" id="panel-control-color-texto">
                                 <input name="Color de texto" type="color" id="texto-color-input" value="#000000">
                                 <span id="texto-color">#000000</span>
                             </div>
                         </div>
                         <div class="panel-control-columna panel-control">
                             <h3 class="panel-control-titulo">FONDO</h3>
-                            <div class="panel-control-color">
+                            <div class="panel-control-color" id="panel-control-color-texto2">
                                 <input name="Color de fondo de texto" type="color" id="texto-color-fondo-input" value="#FFFFFF">
                                 <span id="texto-color-fondo">#FFFFFF</span>
                             </div>
@@ -168,9 +174,9 @@
                 <div class="panel-control">
                     <h3 class="panel-control-titulo">CONTORNO</h3>
                     <div class="botones-contenedor">
-                        <button class="boton" id="sin-contorno">Ninguno</button>
-                        <button class="boton" id="contorno-claro">Claro</button>
-                        <button class="boton" id="contorno-oscuro">Oscuro</button>
+                        <button class="boton boton-fondo" id="sin-contorno">Ninguno</button>
+                        <button class="boton boton-fondo" id="contorno-claro">Claro</button>
+                        <button class="boton boton-fondo" id="contorno-oscuro">Oscuro</button>
                     </div>
                 </div>
                 <div class="panel-control">
@@ -191,6 +197,8 @@
             </section>
         </aside>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js" integrity="sha512-csNcFYJniKjJxRWRV1R7fvnXrycHP6qDR21mgz1ZP55xY5d+aHLfo9/FcGDQLfn2IfngbAHd8LdfsagcCqgTcQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js" integrity="sha512-01CJ9/g7e8cUmY0DFTMcUw/ikS799FHiOA0eyHsUWfOetgbx/t6oV4otQ5zXKQyIrQGTHSmRVPIgrgLcZi/WMA==" crossorigin="anonymous"></script>
     <script src="./app.js"></script>
 </body>
 </html>

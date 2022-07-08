@@ -136,17 +136,20 @@ botonDerecha.addEventListener('click', () => {
     textoAbajo.style.textAlign = 'right'
 })
 
-
+const colorTextoSpan = document.getElementById('texto-color')
 colorTexto.addEventListener('input', (event) => {
   const colorElegido = event.target.value;
-  textoAriba.style.color = `${colorElegido}`
-  textoAbajo.style.color = `${colorElegido}`
+  textoAriba.style.color = `${colorElegido}`;
+  textoAbajo.style.color = `${colorElegido}`;
+  colorTextoSpan.innerText = `${colorElegido}`;
 })
 
-
+const colorFondoSpan = document.getElementById('texto-color-fondo');
 colorFondo.addEventListener('input', (event) => {
     const colorFondoElegido = event.target.value;
-    colorFondoFinal.style.backgroundColor = `${colorFondoElegido}`
+    textoAriba.style.backgroundColor = `${colorFondoElegido}`;
+    textoAbajo.style.backgroundColor = `${colorFondoElegido}`;
+    colorFondoSpan.innerText = `${colorFondoElegido}`;
 })
 
 
@@ -207,9 +210,147 @@ interlineado.addEventListener('change', () => {
 // ****************************************************PANEL IMAGEN**************************************
 const url = document.getElementById('input-url')
 const imagenMeme = document.getElementById('imagen-meme');
+url.addEventListener('input', (event) => {
+    const rutaImg = event.target.value;
+    imagenMeme.style.backgroundImage = `url(${rutaImg})`
+})
+const mezclaColores = document.getElementById('mezcla-colores-input');
+const mezclaColoresSpan = document.getElementById('mezcla-colores');
 
-imagenMeme.addEventListener('click', (event) => {
-    const urlIngresado2 = url.innerText('');
-    imagenMeme = event.target.value
-    imagenMeme.style.backgroundImage = src= `${urlIngresado2}`
-} )
+mezclaColores.addEventListener('input', (event) => {
+    const mezclaFinal = event.target.value;
+    imagenMeme.style.backgroundColor = `${mezclaFinal}`;
+    mezclaColoresSpan.innerText = `${mezclaFinal}`;
+})
+
+const mezclaMenu = document.getElementById('mezcla-colores-menu');
+mezclaMenu.addEventListener('change', () => {
+    if(mezclaMenu.value == 'Ninguno'){
+        imagenMeme.style.backgroundBlendMode = 'unset';
+    }
+    if(mezclaMenu.value == 'Aclarar'){
+        imagenMeme.style.backgroundBlendMode = 'lighten';
+    }
+    if(mezclaMenu.value == 'Oscurecer'){
+        imagenMeme.style.backgroundBlendMode = 'darken';
+    }
+    if(mezclaMenu.value == 'Diferencia'){
+        imagenMeme.style.backgroundBlendMode = 'difference';
+    }
+    if(mezclaMenu.value == 'Luminocidad'){
+        imagenMeme.style.backgroundBlendMode = 'luminosity';
+    }
+    if(mezclaMenu.value == 'Multiplicar'){
+        imagenMeme.style.backgroundBlendMode = 'multiply';
+    }
+})
+
+const brillo = document.getElementById('brillo-deslizar');
+brillo.addEventListener('input', (event) => {
+    brilloFinal = event.target.value;
+    imagenMeme.style.filter = `brightness(${brilloFinal})`
+}) 
+const opacidad = document.getElementById('opacidad-deslizar');
+opacidad.addEventListener('input', (event) => {
+    opacidadFinal = event.target.value;
+    imagenMeme.style.filter = `opacity(${opacidadFinal})`
+}) 
+const contraste = document.getElementById('contraste-deslizar');
+contraste.addEventListener('input', (event) => {
+    constrasteFinal = event.target.value;
+    imagenMeme.style.filter = `contrast(${constrasteFinal}%)`
+}) 
+const desenfoque = document.getElementById('des-deslizar');
+desenfoque.addEventListener('input', (event) => {
+    desenfoqueFinal = event.target.value;
+    imagenMeme.style.filter = `blur(${desenfoqueFinal}px)`
+}) 
+const escalaDeGrises = document.getElementById('escala-deslizar');
+escalaDeGrises.addEventListener('input', (event) => {
+    escalaDeGrisesFinal = event.target.value;
+    imagenMeme.style.filter = `grayscale(${escalaDeGrisesFinal}%)`
+}) 
+const sepia = document.getElementById('sepia-deslizar');
+sepia.addEventListener('input', (event) => {
+    sepiaFinal = event.target.value;
+    imagenMeme.style.filter = `sepia(${sepiaFinal}%)`
+}) 
+const hue = document.getElementById('hue-deslizar');
+hue.addEventListener('input', (event) => {
+    hueFinal = event.target.value;
+    imagenMeme.style.filter = `hue-rotate(${hueFinal}deg)`
+}) 
+const saturacion = document.getElementById('saturacion-deslizar');
+saturacion.addEventListener('input', (event) => {
+    saturacionFinal = event.target.value;
+    imagenMeme.style.filter = `saturate(${saturacionFinal}%)`
+}) 
+const negativo = document.getElementById('negativo-deslizar');
+negativo.addEventListener('input', (event) => {
+    negativoFinal = event.target.value;
+    imagenMeme.style.filter = `invert(${negativoFinal})`
+}) 
+const botonRestablecer = document.getElementById('boton-restablecer');
+botonRestablecer.addEventListener('click', (event) => {
+    brillo.value = '1'
+    imagenMeme.style.filter = 'brightness(1)';
+    opacidad.value = '1'
+    imagenMeme.style.filter = 'opacity(1)';
+    contraste.value = '0'
+    imagenMeme.style.filter = 'contrast(100%)';
+    desenfoque.value = '0'
+    imagenMeme.style.filter = 'blur(0px)';
+    escalaDeGrises.value = '0'
+    imagenMeme.style.filter = 'grayscale(0%)';
+    sepia.value = '0'
+    imagenMeme.style.filter = 'sepia(0%)';
+    hue.value = '0'
+    imagenMeme.style.filter = 'hue-rotate(0deg)';
+    saturacion.value = '0'
+    imagenMeme.style.filter = 'saturate(100%)';
+    negativo.value = '0'
+    imagenMeme.style.filter = 'invert(0)';
+})
+
+const modoClaro = document.getElementById('boton-modo-claro');
+const header = document.getElementById('header');
+const memeContenedor = document.getElementById('meme-contenedor')
+const panelControlColorImg = document.getElementById('panel-control-color-imagen')
+const panelControlColorTxt = document.getElementById('panel-control-color-texto')
+const panelControlColorTxt2 = document.getElementById('panel-control-color-texto2')
+
+modoClaro.addEventListener('click', () => {
+    modoClaro.innerText = 'Modo Oscuro'
+    header.classList.toggle('header-claro');
+    memeContenedor.classList.toggle('meme-contenedor-claro');
+    panel.classList.toggle('panel-claro');
+    url.classList.toggle('panel-control-input-claro')
+    panelControlColorImg.classList.toggle('claro')
+    mezclaMenu.classList.toggle('panel-control-input-claro');
+    botonRestablecer.classList.toggle('boton-restablecer-claro');
+    botonCerrar.classList.toggle('button-claro')
+    botonContornoClaro.classList.toggle('button-claro')
+    botonContornoOscuro.classList.toggle('button-claro')
+    botonSinContorno.classList.toggle('button-claro')
+    botonCentro.classList.toggle('button-claro')
+    botonDerecha.classList.toggle('button-claro')
+    botonIzquierda.classList.toggle('button-claro')
+    botonTexto.classList.toggle('button-claro')
+    botonImagen.classList.toggle('button-claro')
+    modoClaro.classList.toggle('button-claro')
+    inputTextoInferior.classList.toggle('panel-control-input-claro')
+    inputTextoSuperior.classList.toggle('panel-control-input-claro')
+    interlineado.classList.toggle('panel-control-input-claro')
+    espaciado.classList.toggle('panel-control-input-claro')
+    fuentes.classList.toggle('claro')
+    tamañoTexto.classList.toggle('claro')
+    panelControlColorTxt.classList.toggle('claro')
+    panelControlColorTxt2.classList.toggle('claro')
+})
+
+const botonDescargar = document.getElementById('boton-descargar');
+// const domtoimage = document.getElementById('imagen-editable')
+botonDescargar.addEventListener('click', () => {
+    domtoimage.toBlob(document.getElementById('imagen-editable')).then(blob => 
+        saveAs(blob, 'mi-meme.png'))
+})
