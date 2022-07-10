@@ -1,45 +1,18 @@
-// elementos con los que trabajo
+// elementos con los que trabajo paneles
+// ****************************************************PANEL TEXTO*************************************
+// abir y cerrar paneles
 const imagen = document.getElementById('panel-imagen');
 const texto = document.getElementById('panel-texto');
-const panel = document.getElementById('panel')
-
+const panel = document.getElementById('panel');
 const botonImagen = document.getElementById('boton-imagen');
 const botonTexto = document.getElementById('boton-texto');
-const botonCerrar = document.getElementById('cerrar-panel')
-
-const inputTextoSuperior = document.getElementById('texto-superior-input');
-const textoAriba = document.getElementById('texto-arriba');
-const inputTextoInferior = document.getElementById('texto-inferior-input');
-const textoAbajo = document.getElementById('texto-abajo')
-
-const textoSuperior = document.getElementById('sin-texto-superior');
-const textoInferior = document.getElementById('sin-texto-inferior');
-
-const fuentes = document.getElementById('selector-fuentes');
-
-const tamañoTexto = document.getElementById('tamaño-texto')
-
-const botonIzquierda = document.getElementById('alineacion-izquierda');
-const botonCentro = document.getElementById('alineacion-centro');
-const botonDerecha = document.getElementById('alineacion-derecha');
-
-const colorTexto = document.getElementById('texto-color-input');
-
-const colorFondo = document.getElementById('texto-color-fondo-input');
-const colorFondoFinal = document.getElementById('imagen-editable');
-
-const sinFondo = document.getElementById('texto-sin-fondo');
-
-const botonSinContorno = document.getElementById('sin-contorno');
-const botonContornoClaro = document.getElementById('contorno-claro');
-const botonContornoOscuro = document.getElementById('contorno-oscuro');
-
-const espaciado = document.getElementById('espaciado-input');
-
-const interlineado = document.getElementById('interlineado-input');
-
-
-// eventos y funciones que se ejecutan 
+const botonCerrar = document.getElementById('cerrar-panel');
+const modoClaro = document.getElementById('boton-modo-claro');
+const header = document.getElementById('header');
+const memeContenedor = document.getElementById('meme-contenedor');
+const panelControlColorImg = document.getElementById('panel-control-color-imagen');
+const panelControlColorTxt = document.getElementById('panel-control-color-texto');
+const panelControlColorTxt2 = document.getElementById('panel-control-color-texto2');
 botonTexto.addEventListener('click', () => {
     imagen.classList.add('oculto');
     texto.classList.remove('oculto');
@@ -54,7 +27,39 @@ botonCerrar.addEventListener('click', () => {
     panel.classList.add('oculto');
 })
 
-
+modoClaro.addEventListener('click', () => {
+    modoClaro.innerText = 'Modo Oscuro';
+    header.classList.toggle('header-claro');
+    memeContenedor.classList.toggle('meme-contenedor-claro');
+    panel.classList.toggle('panel-claro');
+    url.classList.toggle('panel-control-input-claro');
+    panelControlColorImg.classList.toggle('claro');
+    mezclaMenu.classList.toggle('panel-control-input-claro');
+    botonRestablecer.classList.toggle('boton-restablecer-claro');
+    botonCerrar.classList.toggle('button-claro');
+    botonContornoClaro.classList.toggle('button-claro');
+    botonContornoOscuro.classList.toggle('button-claro');
+    botonSinContorno.classList.toggle('button-claro');
+    botonCentro.classList.toggle('button-claro');
+    botonDerecha.classList.toggle('button-claro');
+    botonIzquierda.classList.toggle('button-claro');
+    botonTexto.classList.toggle('button-claro');
+    botonImagen.classList.toggle('button-claro');
+    modoClaro.classList.toggle('button-claro');
+    inputTextoInferior.classList.toggle('panel-control-input-claro');
+    inputTextoSuperior.classList.toggle('panel-control-input-claro');
+    interlineado.classList.toggle('panel-control-input-claro');
+    espaciado.classList.toggle('panel-control-input-claro');
+    fuentes.classList.toggle('claro');
+    tamañoTexto.classList.toggle('claro');
+    panelControlColorTxt.classList.toggle('claro');
+    panelControlColorTxt2.classList.toggle('claro');
+})
+//texto 
+const inputTextoSuperior = document.getElementById('texto-superior-input');
+const textoAriba = document.getElementById('texto-arriba');
+const inputTextoInferior = document.getElementById('texto-inferior-input');
+const textoAbajo = document.getElementById('texto-abajo');
 inputTextoSuperior.addEventListener('input', (event) => {
     const textoIngresado = event.target.value;
     textoAriba.innerHTML = textoIngresado;
@@ -64,17 +69,16 @@ inputTextoInferior.addEventListener('input', (event) => {
     textoAbajo.innerHTML = textoIngresado2;
 })
 
-
+const textoSuperior = document.getElementById('sin-texto-superior');
+const textoInferior = document.getElementById('sin-texto-inferior');
 textoSuperior.addEventListener('click', (event) => {
     textoAriba.classList.toggle('oculto');
 })
-
-
 textoInferior.addEventListener('click', (event) => {
     textoAbajo.classList.toggle('oculto');
 })
-
-
+//fuentes
+const fuentes = document.getElementById('selector-fuentes');
 fuentes.addEventListener('change', () => {
     if(fuentes.value == 'Arial'){
         textoAriba.style.fontFamily = 'Arial';
@@ -113,29 +117,32 @@ fuentes.addEventListener('change', () => {
         textoAbajo.style.fontFamily = 'Times New Roman';
     }
 })
-
-
+//tamaños de texto
+const tamañoTexto = document.getElementById('tamaño-texto')
 tamañoTexto.addEventListener('input', (event) => {
     const numeroIngresado = event.target.value;
-    textoAriba.style.fontSize = `${numeroIngresado}px`
-    textoAbajo.style.fontSize = `${numeroIngresado}px`
+    textoAriba.style.fontSize = `${numeroIngresado}px`;
+    textoAbajo.style.fontSize = `${numeroIngresado}px`;
 
 })
-
-
+//alineacion
+const botonIzquierda = document.getElementById('alineacion-izquierda');
+const botonCentro = document.getElementById('alineacion-centro');
+const botonDerecha = document.getElementById('alineacion-derecha');
 botonIzquierda.addEventListener('click', () => {
-    textoAriba.style.textAlign = 'left'
-    textoAbajo.style.textAlign = 'left'
+    textoAriba.style.textAlign = 'left';
+    textoAbajo.style.textAlign = 'left';
 })
 botonCentro.addEventListener('click', () => {
-    textoAriba.style.textAlign = 'center'
-    textoAbajo.style.textAlign = 'center'
+    textoAriba.style.textAlign = 'center';
+    textoAbajo.style.textAlign = 'center';
 })
 botonDerecha.addEventListener('click', () => {
-    textoAriba.style.textAlign = 'right'
-    textoAbajo.style.textAlign = 'right'
+    textoAriba.style.textAlign = 'right';
+    textoAbajo.style.textAlign = 'right';
 })
-
+//color
+const colorTexto = document.getElementById('texto-color-input');
 const colorTextoSpan = document.getElementById('texto-color')
 colorTexto.addEventListener('input', (event) => {
   const colorElegido = event.target.value;
@@ -143,7 +150,9 @@ colorTexto.addEventListener('input', (event) => {
   textoAbajo.style.color = `${colorElegido}`;
   colorTextoSpan.innerText = `${colorElegido}`;
 })
-
+//fondo
+const colorFondo = document.getElementById('texto-color-fondo-input');
+const colorFondoFinal = document.getElementById('imagen-editable');
 const colorFondoSpan = document.getElementById('texto-color-fondo');
 colorFondo.addEventListener('input', (event) => {
     const colorFondoElegido = event.target.value;
@@ -152,34 +161,36 @@ colorFondo.addEventListener('input', (event) => {
     colorFondoSpan.innerText = `${colorFondoElegido}`;
 })
 
-
+const sinFondo = document.getElementById('texto-sin-fondo');
 sinFondo.addEventListener('click', (event) => {
     textoAbajo.classList.toggle('fondo');
     textoAriba.classList.toggle('fondo');
 })
-
-
+//contornos
+const botonSinContorno = document.getElementById('sin-contorno');
+const botonContornoClaro = document.getElementById('contorno-claro');
+const botonContornoOscuro = document.getElementById('contorno-oscuro');
 botonSinContorno.addEventListener('click', () => {
-    textoAriba.style.webkitTextStroke = 'transparent'
-    textoAbajo.style.webkitTextStroke = 'transparent'
+    textoAriba.style.webkitTextStroke = 'transparent';
+    textoAbajo.style.webkitTextStroke = 'transparent';
 })
 botonContornoClaro.addEventListener('click', () => {
-    textoAriba.style.webkitTextStroke = '0.5px white'
-    textoAbajo.style.webkitTextStroke = '0.5px white'
+    textoAriba.style.webkitTextStroke = '0.5px white';
+    textoAbajo.style.webkitTextStroke = '0.5px white';
 })
 botonContornoOscuro.addEventListener('click', () => {
-    textoAriba.style.webkitTextStroke = '0.5px black'
-    textoAbajo.style.webkitTextStroke = '0.5px black'
+    textoAriba.style.webkitTextStroke = '0.5px black';
+    textoAbajo.style.webkitTextStroke = '0.5px black';
 })
-
-
+//espaciado
+const espaciado = document.getElementById('espaciado-input');
 espaciado.addEventListener('input', (event) => {
     const espacioIngresado = event.target.value;
-    textoAriba.style.height = `${espacioIngresado}vh`
-    textoAbajo.style.height = `${espacioIngresado}vh`
+    textoAriba.style.height = `${espacioIngresado}vh`;
+    textoAbajo.style.height = `${espacioIngresado}vh`;
 })
-
-
+//interlineado
+const interlineado = document.getElementById('interlineado-input');
 interlineado.addEventListener('change', () => {
     if(interlineado.value == '0.8'){
         textoAriba.style.lineHeight = '0.8';
@@ -208,21 +219,22 @@ interlineado.addEventListener('change', () => {
 })
 
 // ****************************************************PANEL IMAGEN**************************************
-const url = document.getElementById('input-url')
+// agregado de la imagen mediante url
+const url = document.getElementById('input-url');
 const imagenMeme = document.getElementById('imagen-meme');
 url.addEventListener('input', (event) => {
     const rutaImg = event.target.value;
-    imagenMeme.style.backgroundImage = `url(${rutaImg})`
+    imagenMeme.style.backgroundImage = `url(${rutaImg})`;
 })
+//mezcla de colores
 const mezclaColores = document.getElementById('mezcla-colores-input');
 const mezclaColoresSpan = document.getElementById('mezcla-colores');
-
 mezclaColores.addEventListener('input', (event) => {
     const mezclaFinal = event.target.value;
     imagenMeme.style.backgroundColor = `${mezclaFinal}`;
     mezclaColoresSpan.innerText = `${mezclaFinal}`;
 })
-
+//opciones de mezcla
 const mezclaMenu = document.getElementById('mezcla-colores-menu');
 mezclaMenu.addEventListener('change', () => {
     if(mezclaMenu.value == 'Ninguno'){
@@ -244,113 +256,77 @@ mezclaMenu.addEventListener('change', () => {
         imagenMeme.style.backgroundBlendMode = 'multiply';
     }
 })
-
+//filtros
 const brillo = document.getElementById('brillo-deslizar');
 brillo.addEventListener('input', (event) => {
     brilloFinal = event.target.value;
-    imagenMeme.style.filter = `brightness(${brilloFinal})`
+    imagenMeme.style.filter = `brightness(${brilloFinal})`;
 }) 
 const opacidad = document.getElementById('opacidad-deslizar');
 opacidad.addEventListener('input', (event) => {
     opacidadFinal = event.target.value;
-    imagenMeme.style.filter = `opacity(${opacidadFinal})`
+    imagenMeme.style.filter = `opacity(${opacidadFinal})`;
 }) 
 const contraste = document.getElementById('contraste-deslizar');
 contraste.addEventListener('input', (event) => {
     constrasteFinal = event.target.value;
-    imagenMeme.style.filter = `contrast(${constrasteFinal}%)`
+    imagenMeme.style.filter = `contrast(${constrasteFinal}%)`;
 }) 
 const desenfoque = document.getElementById('des-deslizar');
 desenfoque.addEventListener('input', (event) => {
     desenfoqueFinal = event.target.value;
-    imagenMeme.style.filter = `blur(${desenfoqueFinal}px)`
+    imagenMeme.style.filter = `blur(${desenfoqueFinal}px)`;
 }) 
 const escalaDeGrises = document.getElementById('escala-deslizar');
 escalaDeGrises.addEventListener('input', (event) => {
     escalaDeGrisesFinal = event.target.value;
-    imagenMeme.style.filter = `grayscale(${escalaDeGrisesFinal}%)`
+    imagenMeme.style.filter = `grayscale(${escalaDeGrisesFinal}%)`;
 }) 
 const sepia = document.getElementById('sepia-deslizar');
 sepia.addEventListener('input', (event) => {
     sepiaFinal = event.target.value;
-    imagenMeme.style.filter = `sepia(${sepiaFinal}%)`
+    imagenMeme.style.filter = `sepia(${sepiaFinal}%)`;
 }) 
 const hue = document.getElementById('hue-deslizar');
 hue.addEventListener('input', (event) => {
     hueFinal = event.target.value;
-    imagenMeme.style.filter = `hue-rotate(${hueFinal}deg)`
+    imagenMeme.style.filter = `hue-rotate(${hueFinal}deg)`;
 }) 
 const saturacion = document.getElementById('saturacion-deslizar');
 saturacion.addEventListener('input', (event) => {
     saturacionFinal = event.target.value;
-    imagenMeme.style.filter = `saturate(${saturacionFinal}%)`
+    imagenMeme.style.filter = `saturate(${saturacionFinal}%)`;
 }) 
 const negativo = document.getElementById('negativo-deslizar');
 negativo.addEventListener('input', (event) => {
     negativoFinal = event.target.value;
-    imagenMeme.style.filter = `invert(${negativoFinal})`
+    imagenMeme.style.filter = `invert(${negativoFinal})`;
 }) 
+//boton restablecer
 const botonRestablecer = document.getElementById('boton-restablecer');
 botonRestablecer.addEventListener('click', (event) => {
-    brillo.value = '1'
+    brillo.value = '1';
     imagenMeme.style.filter = 'brightness(1)';
-    opacidad.value = '1'
+    opacidad.value = '1';
     imagenMeme.style.filter = 'opacity(1)';
-    contraste.value = '0'
+    contraste.value = '0';
     imagenMeme.style.filter = 'contrast(100%)';
-    desenfoque.value = '0'
+    desenfoque.value = '0';
     imagenMeme.style.filter = 'blur(0px)';
-    escalaDeGrises.value = '0'
+    escalaDeGrises.value = '0';
     imagenMeme.style.filter = 'grayscale(0%)';
-    sepia.value = '0'
+    sepia.value = '0';
     imagenMeme.style.filter = 'sepia(0%)';
-    hue.value = '0'
+    hue.value = '0';
     imagenMeme.style.filter = 'hue-rotate(0deg)';
-    saturacion.value = '0'
+    saturacion.value = '0';
     imagenMeme.style.filter = 'saturate(100%)';
-    negativo.value = '0'
+    negativo.value = '0';
     imagenMeme.style.filter = 'invert(0)';
 })
-
-const modoClaro = document.getElementById('boton-modo-claro');
-const header = document.getElementById('header');
-const memeContenedor = document.getElementById('meme-contenedor')
-const panelControlColorImg = document.getElementById('panel-control-color-imagen')
-const panelControlColorTxt = document.getElementById('panel-control-color-texto')
-const panelControlColorTxt2 = document.getElementById('panel-control-color-texto2')
-
-modoClaro.addEventListener('click', () => {
-    modoClaro.innerText = 'Modo Oscuro'
-    header.classList.toggle('header-claro');
-    memeContenedor.classList.toggle('meme-contenedor-claro');
-    panel.classList.toggle('panel-claro');
-    url.classList.toggle('panel-control-input-claro')
-    panelControlColorImg.classList.toggle('claro')
-    mezclaMenu.classList.toggle('panel-control-input-claro');
-    botonRestablecer.classList.toggle('boton-restablecer-claro');
-    botonCerrar.classList.toggle('button-claro')
-    botonContornoClaro.classList.toggle('button-claro')
-    botonContornoOscuro.classList.toggle('button-claro')
-    botonSinContorno.classList.toggle('button-claro')
-    botonCentro.classList.toggle('button-claro')
-    botonDerecha.classList.toggle('button-claro')
-    botonIzquierda.classList.toggle('button-claro')
-    botonTexto.classList.toggle('button-claro')
-    botonImagen.classList.toggle('button-claro')
-    modoClaro.classList.toggle('button-claro')
-    inputTextoInferior.classList.toggle('panel-control-input-claro')
-    inputTextoSuperior.classList.toggle('panel-control-input-claro')
-    interlineado.classList.toggle('panel-control-input-claro')
-    espaciado.classList.toggle('panel-control-input-claro')
-    fuentes.classList.toggle('claro')
-    tamañoTexto.classList.toggle('claro')
-    panelControlColorTxt.classList.toggle('claro')
-    panelControlColorTxt2.classList.toggle('claro')
-})
-
+//boton de descarga
 const botonDescargar = document.getElementById('boton-descargar');
-// const domtoimage = document.getElementById('imagen-editable')
 botonDescargar.addEventListener('click', () => {
-    domtoimage.toBlob(document.getElementById('imagen-editable')).then(blob => 
-        saveAs(blob, 'mi-meme.png'))
+    domToImage.toBlob(document.getElementById('imagen-editable')).then(blob => 
+        saveAs(blob, 'mi-meme.png'));
 })
