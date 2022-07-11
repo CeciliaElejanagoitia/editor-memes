@@ -326,7 +326,6 @@ botonRestablecer.addEventListener('click', (event) => {
 })
 //boton de descarga
 const botonDescargar = document.getElementById('boton-descargar');
-botonDescargar.addEventListener('click', () => {
-    domToImage.toBlob(document.getElementById('imagen-editable')).then(blob => 
-        saveAs(blob, 'mi-meme.png'));
-})
+botonDescargar.addEventListener('click', () => 
+    domToImage.toBlob(document.getElementById('imagen-editable')).then(blob =>
+        saveAs(blob, 'mi-meme.png')))
